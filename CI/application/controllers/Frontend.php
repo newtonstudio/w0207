@@ -3,8 +3,9 @@ class Frontend extends CI_Controller {
 
     public function home(){
         
+        $this->load->view("header");
         $this->load->view("home");
-
+        $this->load->view("footer");
     }
 
     public function product_list(){
@@ -16,13 +17,18 @@ class Frontend extends CI_Controller {
         ];
         $data['productList'] = $productList;
 
+        $this->load->view("header");
         $this->load->view("product_list", $data);
+        $this->load->view("footer");
 
 
     }
 
     public function product_detail($product_id){
-        echo "<h1>Product Detail ".$product_id."</h1>";
+        
+        $this->load->view("header");
+        $this->load->view("footer");
+
     }
 
 }

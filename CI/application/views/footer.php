@@ -1,0 +1,1 @@
+<p>All Rights Reserve</p>
