@@ -5,13 +5,24 @@ class Frontend extends CI_Controller {
 
         $this->load->model("Product_model");
 
-        $productlist = $this->Product_model->get_where();
+        $arrivalList = $this->Product_model->get_where(array(
+            'latest' => 1,
+        ));
+        $featuredList = $this->Product_model->get_where(array(
+            'featured' => 1,
+        ));
+        $topsellList = $this->Product_model->get_where(array(
+            'topsell' => 1,
+        ));
 
-        print_r($productlist);
-        exit;
+        $data = [
+            'arrivalList' => $arrivalList,
+            'featuredList' => $featuredList,
+            'topsellList' => $topsellList,
+        ];
         
         $this->load->view("header");
-        $this->load->view("home");
+        $this->load->view("home", $data);
         $this->load->view("footer");
     }
 
