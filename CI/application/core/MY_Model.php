@@ -4,7 +4,9 @@ class MY_Model extends CI_Model {
     protected $tablename = "";
 
     public function __construct(){
+        //parent::__construct();
         $this->load->database();
+        
     }
 
     public function record_count($where=array()) {

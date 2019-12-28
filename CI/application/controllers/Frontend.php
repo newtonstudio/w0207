@@ -105,6 +105,9 @@ class Frontend extends CI_Controller {
 
         }
 
+        $this->load->library("emailer");
+        $this->emailer->sendmail("Someone Add Cart", "Yeah! Someone Add cart");
+
         redirect(base_url('product_detail/'.$product_id));
 
     }
