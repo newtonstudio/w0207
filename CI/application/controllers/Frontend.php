@@ -2,6 +2,13 @@
 class Frontend extends CI_Controller {
 
     public function home(){
+
+        $this->load->model("Product_model");
+
+        $productlist = $this->Product_model->get_where();
+
+        print_r($productlist);
+        exit;
         
         $this->load->view("header");
         $this->load->view("home");
