@@ -23,8 +23,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+$portString = "";
+if($_SERVER['SERVER_PORT']!="80") {
+    $portString = ":".$_SERVER['SERVER_PORT'];
+}
+
 if($_SERVER['HTTP_HOST'] == "myshopping.local") {
-$config['base_url'] = 'http://myshopping.local/';
+$config['base_url'] = 'http://myshopping.local'.$portString.'/';
 } else {
 $config['base_url'] = 'http://myshopping.com.my/';    
 }
