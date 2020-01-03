@@ -47,16 +47,49 @@ class Frontend extends CI_Controller {
         $this->load->view("footer", $this->data);
     }
 
-    public function product_list(){
+    public function product_list($page=1){
+
+        $sql = array();
+
+        $item_per_page = 10;
+        $start = ( $page - 1 ) * $item_per_page;        
+        $total_records = $this->Product_model->record_count($sql);
+
+        $this->data['product_list'] = $this->Product_model->fetch($sql, $item_per_page, $start);
+
+        $this->load->library('pagination');
+        $config['base_url'] = base_url('product_list');
+		$config['total_rows'] = $total_records;
+		$config['per_page'] = $item_per_page;
+		$config['use_page_numbers'] = true;
+		$config['full_tag_open'] = "<ul class='pagination'>";
+        $config['full_tag_close'] = "</ul>";
+
+        $config['first_link'] = "First";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tag_close'] = "</li>";
+
+        $config['last_link'] = "Last";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tag_close'] = "</li>";
         
-        $productList = [
-            ["id" => "1", "title" => "TV"],
-            ["id" => "2", "title" => "Home Cooker"],
-        ];
-        $data['productList'] = $productList;
+        $config['prev_link'] = "<i class='fa fa-angle-left'></i>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tag_close'] = "</li>";
+
+        $config['next_link'] = "<i class='fa fa-angle-right'></i>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tag_close'] = "</li>";
+
+		$config['num_tag_open'] = "<li>";
+		$config['num_tag_close'] = "</li>";
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = "</a></li>";
+		$this->pagination->initialize($config);
+		$this->data['pagination'] =  $this->pagination->create_links();
 
         $this->load->view("header", $this->data);
-        $this->load->view("product_list", $data);
+        $this->load->view("product_list", $this->data);
         $this->load->view("footer", $this->data);
 
 

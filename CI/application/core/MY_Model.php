@@ -20,6 +20,15 @@ class MY_Model extends CI_Model {
 
     }
 
+    public function fetch($where=array(), $limit, $start) {
+
+        $this->db->where($where);
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($this->tablename);
+        return $query->result_array(); //return multidimensional array
+
+    }
+
     public function getOne($where=array()) {
         //query builder
         $this->db->select("*");
