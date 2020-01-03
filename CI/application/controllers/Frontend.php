@@ -22,6 +22,14 @@ class Frontend extends CI_Controller {
 
     }
 
+    public function login() {
+
+        $this->load->view("header", $this->data);
+        $this->load->view("login", $this->data);
+        $this->load->view("footer", $this->data);
+
+    }
+
     public function home(){
 
         $this->data['arrivalList'] = $this->Product_model->get_where(array(
