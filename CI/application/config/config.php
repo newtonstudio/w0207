@@ -24,15 +24,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$portString = "";
-if($_SERVER['SERVER_PORT']!="80") {
-    $portString = ":".$_SERVER['SERVER_PORT'];
+$protocol = "http://";
+if(isset($_SERVER['SERVER_PORT'])) {
+	switch($_SERVER['SERVER_PORT']){
+		case "443":
+			$protocol = "https://";
+			break;
+		default:
+			$protocol = "http://";
+			break;
+	}
 }
 
-if($_SERVER['HTTP_HOST'] == "myshopping.local") {
-$config['base_url'] = 'http://myshopping.local'.$portString.'/';
+
+if(isset($_SERVER['HTTP_HOST'])) {
+	$config['base_url'] = $protocol.$_SERVER['HTTP_HOST']."/";
 } else {
-$config['base_url'] = 'http://myshopping.com.my/';    
+	$config['base_url'] = $protocol."myshopping.local/";
 }
 
 /*
