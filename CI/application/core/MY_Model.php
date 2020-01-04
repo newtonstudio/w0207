@@ -22,6 +22,7 @@ class MY_Model extends CI_Model {
 
     public function fetch($where=array(), $limit, $start) {
 
+        //SELECT * FROM tablanem LIMIT start, itemperpage
         $this->db->where($where);
         $this->db->limit($limit, $start);
         $query = $this->db->get($this->tablename);

@@ -33,7 +33,7 @@ class Backend extends CI_Controller {
 
 		$dataList = $this->Visitor_model->get_where(array());
 
-		$dateGroup = array();
+        $dateGroup = array();
 
 		if(!empty($dataList)) {
 			foreach($dataList as $v) {
@@ -50,7 +50,7 @@ class Backend extends CI_Controller {
 		ksort($dateGroup);
 
 		$finalFormat = array(
-			array("Month", "Qty")
+			array("Month", "pageViews")
 		);
 
 		if(!empty($dateGroup)){

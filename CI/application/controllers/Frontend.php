@@ -108,6 +108,15 @@ class Frontend extends CI_Controller {
 
         $sql = array();
 
+        /*
+        SELECT * FROM tablename WHERE ... LIMIT start,item_per_page
+
+        page = 1, start = (1)*10 = 0
+        page = 2, start = (2-1)*10 = 10
+        page = 3, start = (3-1)*10 = 20
+        */
+        
+
         $item_per_page = 10;
         $start = ( $page - 1 ) * $item_per_page;        
         $total_records = $this->Product_model->record_count($sql);
