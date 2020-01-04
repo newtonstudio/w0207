@@ -4,10 +4,20 @@ class Frontend extends CI_Controller {
     private $data = [];
 
     public function __construct(){
+
         parent::__construct();
+
+        $this->output->enable_profiler(TRUE);
+
+        $this->benchmark->mark("Model_start");
+
         $this->load->model("Product_model");
         $this->load->model("Cart_model");
 
+        $this->benchmark->mark("Model_end");
+
+
+        $this->benchmark->mark("CartCalculation_start");
         $sid = session_id();
 
         $this->data['cartTotal'] = $this->Cart_model->record_count(array(
@@ -19,6 +29,8 @@ class Frontend extends CI_Controller {
             'sid' => $sid,
             'is_deleted' => 0,
         ));
+
+        $this->benchmark->mark("CartCalculation_end");
 
     }
 

@@ -4,7 +4,10 @@ class Admin_model extends MY_Model {
 
     public function lowsy_auth($email, $password) {
 
-        $this->db->where("email = '$email' AND pwd = '$password'", NULL, FALSE);
+        $this->db->where(array(
+            'email' => $email,
+            'pwd'   => $password,
+        ));
         $query = $this->db->get($this->tablename);
         return $query->row_array();
 

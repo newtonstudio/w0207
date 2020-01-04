@@ -10,8 +10,8 @@ class Login extends CI_Controller {
 
     public function submit(){
 
-        $email      = $_POST['email'];
-        $password   = $_POST['password'];
+        $email      = $this->input->post("email", true);
+        $password   = $this->input->post("password", true);
 
         $this->load->model("Admin_model");
         $admin = $this->Admin_model->lowsy_auth($email, $password);
