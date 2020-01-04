@@ -22,6 +22,63 @@ class Frontend extends CI_Controller {
 
     }
 
+    public function addcartAPI(){
+		$sid = "abc";
+		$qty 			= $this->input->post("qty", true);
+		$product_id 	= $this->input->post("product_id", true);
+
+		$productData = $this->Product_model->getOne(array(
+			'id' => $product_id,
+		));
+
+		if(empty($productData)) {
+			show_error();
+		}
+
+		$product_title = $productData['title'];
+		$product_price = $productData['price'];
+
+		//Determine is there any same product in cart in same sid
+		//if have update
+		//if not insert
+		$cartData = $this->Cart_model->getOne(array(
+			'sid' => $sid,
+			'product_id' => $product_id,
+			'is_deleted' => 0,
+		));
+
+		if(!empty($cartData)) {
+
+			$currentQty = $cartData['qty'];
+			$finalQty = $currentQty + $qty;
+
+			$this->Cart_model->update(array(
+				'id' => $cartData['id'],
+			), array(
+				'qty' => $finalQty,
+				'modified_date' => date("Y-m-d H:i:s"),
+			));
+
+		} else {
+
+			$cart_id = $this->Cart_model->insert(array(
+				'sid' => $sid,
+				'qty' => $qty,
+				'product_id' => $product_id,
+				'product_title' => $product_title,
+				'product_price' => $product_price,
+				'created_date' => date("Y-m-d H:i:s"),
+			));
+
+		}
+
+		echo json_encode(array(
+			'status' => "OK",
+		));
+
+
+	}
+
     public function login() {
 
         $this->load->view("header", $this->data);

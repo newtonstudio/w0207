@@ -56,6 +56,10 @@
 
 		<!-- Custom css --> 
 		<link href="<?=base_url('assets/template/css/custom.css')?>" rel="stylesheet">
+
+		<meta name="google-signin-scope" content="profile email">
+	    <meta name="google-signin-client_id" content="693437561551-cflb2un717og7ss4vl5d9n8k66kooj1c.apps.googleusercontent.com">
+	    <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 
 	<!-- body classes:  -->
