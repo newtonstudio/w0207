@@ -202,6 +202,22 @@
 		<!-- Custom Scripts -->
 		<script type="text/javascript" src="<?=base_url('assets/template/js/custom.js')?>"
 ></script>
+		<script>
+			function addCartAjax(pid){
+				console.log(pid);
+
+				$.post("<?=base_url('addcartAPI')?>", {qty:1,product_id:pid}, function(result){
+					console.log(result);
+					result = JSON.parse(result);
+					if(result.status == "OK") {
+						alert("Add cart successfully");
+					} else {
+						alert("Something wrong");
+					}
+				});
+
+			}
+		</script>
 
 	</body>
 </html>

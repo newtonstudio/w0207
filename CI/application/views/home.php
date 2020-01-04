@@ -202,7 +202,7 @@ images/shop-slide-2.jpg')?>" alt="slidebg2" data-bgposition="center top"  data-b
 													<p class="small"><?=$v['brief']?></p>
 													<div class="elements-list clearfix">
 														<span class="price">$<?=$v['price']?></span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="javascript:;" onclick="addCartAjax('<?=$v['id']?>')"  class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -238,7 +238,7 @@ images/shop-slide-2.jpg')?>" alt="slidebg2" data-bgposition="center top"  data-b
 													<p class="small"><?=$v['brief']?></p>
 													<div class="elements-list clearfix">
 														<span class="price">$<?=$v['price']?></span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="javascript:;" onclick="addCartAjax('<?=$v['id']?>')" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -273,7 +273,7 @@ images/shop-slide-2.jpg')?>" alt="slidebg2" data-bgposition="center top"  data-b
 													<p class="small"><?=$v['brief']?></p>
 													<div class="elements-list clearfix">
 														<span class="price">$<?=$v['price']?></span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="javascript:;" onclick="addCartAjax('<?=$v['id']?>')"  class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>

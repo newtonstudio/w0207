@@ -23,7 +23,7 @@ class Frontend extends CI_Controller {
     }
 
     public function addcartAPI(){
-		$sid = "abc";
+		$sid = session_id();
 		$qty 			= $this->input->post("qty", true);
 		$product_id 	= $this->input->post("product_id", true);
 
@@ -216,6 +216,25 @@ class Frontend extends CI_Controller {
         $this->emailer->sendmail("Someone Add Cart", "Yeah! Someone Add cart");
 
         redirect(base_url('product_detail/'.$product_id));
+
+    }
+
+    public function mychart(){
+
+
+        $this->load->view("mychart", $this->data);
+
+    }
+
+    public function getProductAPI($page=1){
+
+        $this->load->model("Product_model");
+
+        $productList = $this->Product_model->fetch([], 10, ($page-1)*10);
+
+        //PHP ARRAY => JSON ARRAY
+        echo json_encode($productList);
+
 
     }
 
